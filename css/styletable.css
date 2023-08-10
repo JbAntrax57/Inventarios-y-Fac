@@ -1,0 +1,5 @@
+.table td,
+.table th {
+    font-size: 12px; /* Tamaño de fuente */
+    padding: 0.5rem; /* Márgenes de las celdas */
+}

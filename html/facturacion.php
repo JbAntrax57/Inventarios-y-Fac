@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../js/funciones.js"></script>
     <link rel="stylesheet" href="../css/bootstrap-4.6.0/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-5.3.0/dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 
  
@@ -64,32 +65,44 @@
 
     </style>    
     <title>FACTURACIÓN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 
 </head>
+
 <body onload="fecha()">
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../img/logo RAME png.png" alt="logo" width="40" height="34" class="d-inline-block align-text-top">  SISTEMA DE FACTURACIÓN
+    </a>
+  </div>
+</nav>
     <div class="container">
         <form action="../php/grabarFactura.php" method="post">
-           <h1> <center>FACTURACIÓN</center></h1> 
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="">Cliente:</label>
-                    <input type="text" name="codigoCliente" id="codigoCliente" class="form-control">
+           
+           <div class="form-row">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Cliente" aria-label="Cliente" name="codigoCliente" id="codigoCliente">
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="">Nombre</label>
-                    <input type="text" name="nombreCliente" id="nombreCliente" class="form-control" onkeyup="buscaClienteNombre()">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" name="nombreCliente" id="nombreCliente" onkeyup="buscaClienteNombre()">
                     <div id="sugerencias" class="list-group"></div>
                 </div>
-                <div class="form-group col-md-5">
-                 <a href="./addCliente.html" class="btn btn-primary">+ Nuevo Cliente</a>     
-                </div> 
-                <input type="hidden" name="numeroFilas" id="numeroFilas">
-                               
             </div>
+            <div class="form-group col-md-5">
+                <button onclick="window.location.href='./addCliente.html'" type="button" class="btn btn-outline-success">+ Nuevo Cliente</button>
+                <button onclick="window.location.href='./verClientes.php'" type="button" class="btn btn-outline-info">Ver Clientes</button>
+            </div>
+            <input type="hidden" name="numeroFilas" id="numeroFilas">
+        </div>
+
+            
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="">Fecha:</label>
-                    <input type="text" name="fecha" id="fecha" class="form-control">
+                    <input type="text" name="fecha" id="fecha" class="form-control" disabled>
                 </div>
                 <div class="form-group col-md-2"> 
                     <label for="">SubTotal</label>
@@ -123,11 +136,13 @@
                     <input type="number" name="cantidad" id="cantidad" class="form-control" onchange="verificarStock()">
                 </div>
                 <div class="form-group col-md-5">
-                 <a href="./addProducto.html" class="btn btn-primary">+ Nuevo Producto</a>     
+                <button onclick="window.location.href='./addProducto.html'" type="button" class="btn btn-outline-success">+ Nuevo Producto</button>
+                 <button onclick="window.location.href='./verProductos.php'" type="button" class="btn btn-outline-info">Ver Productos</button>    
                 </div>
-                <div class="form-group col-md-1">
+                <div class="form-group col-md-5">
                     <label for="">Registrar </label>
-                    <input type="button" value="+" class=" btn btn-success form-control " onclick="agregarFilas()">                    
+                    <button  type="button" class="btn btn-outline-danger" onclick="agregarFilas()">Agregar Pedido</button> 
+                    <button onclick="window.location.href='./verFacturas.php'" type="button" class="btn btn-outline-info">Detalle Facturas</button>                  
                 </div>
             </div>
 
@@ -146,6 +161,8 @@
             <input type="submit" value="Grabar Factura" class="btn btn-info">
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 <script>
     function buscaClienteNombre()
