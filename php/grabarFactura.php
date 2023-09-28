@@ -1,4 +1,3 @@
-
 <?php
 include('conexion.php');
 $idCliente = $_POST["codigoCliente"];
@@ -93,4 +92,3 @@ if ($conexion->query($strSQL) === TRUE) {
 }
 
 ?>
-
